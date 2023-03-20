@@ -59,9 +59,7 @@ describe("Bank class", () => {
   it("returns a single transaction", () => {
     const bank = new Bank();
     bank.debitToAccount("14/01/2023", 3000);
-    expect(bank.showTransactions()).toEqual([
-      "date: 14/01/2023, action: debit, amount: 3000",
-    ]);
+    expect(bank.showTransactions()).toEqual(["date: 14/01/2023, debit: 3000"]);
   });
 
   it("returns multiple transactions", () => {
@@ -69,8 +67,17 @@ describe("Bank class", () => {
     bank.debitToAccount("14/01/2023", 3000);
     bank.creditFromAccount("17/01/2023", 200);
     expect(bank.showTransactions()).toEqual([
-      "date: 14/01/2023, action: debit, amount: 3000",
-      "date: 17/01/2023, action: credit, amount: 200",
+      "date: 14/01/2023, debit: 3000",
+      "date: 17/01/2023, credit: 200",
     ]);
   });
+
+  // it("returns the transaction and balance in one line", () => {
+  //   const bank = new Bank();
+  //   bank.debitToAccount("14/01/2023", 3000);
+  //   expect(bank.printStatement());
+  // });
 });
+
+// catch erros - wrong date given
+// balance is less than money being withdrawn
