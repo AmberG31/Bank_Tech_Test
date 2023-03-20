@@ -55,4 +55,22 @@ describe("Bank class", () => {
     bank.creditFromAccount("17/01/2023", 200);
     expect(bank.showBalance()).toEqual(2000);
   });
+
+  it("returns a single transaction", () => {
+    const bank = new Bank();
+    bank.debitToAccount("14/01/2023", 3000);
+    expect(bank.showTransactions()).toEqual([
+      "date: 14/01/2023, action: debit, amount: 3000",
+    ]);
+  });
+
+  it("returns multiple transactions", () => {
+    const bank = new Bank();
+    bank.debitToAccount("14/01/2023", 3000);
+    bank.creditFromAccount("17/01/2023", 200);
+    expect(bank.showTransactions()).toEqual([
+      "date: 14/01/2023, action: debit, amount: 3000",
+      "date: 17/01/2023, action: credit, amount: 200",
+    ]);
+  });
 });
