@@ -19,4 +19,10 @@ describe("Bank class", () => {
     const bank = new Bank();
     expect(bank.showBalance()).toEqual(0);
   });
+
+  it("debits money to the account", () => {
+    const bank = new Bank();
+    bank.debitToAccount(3000.0);
+    expect(bank.showBalance()).toEqual(3000.0);
+  });
 });

@@ -1,10 +1,14 @@
 class Bank {
   constructor() {
-    this.balance = 0;
+    this.balance = 0.0;
   }
 
   showBalance() {
     return this.balance;
+  }
+
+  debitToAccount(amount) {
+    this.balance = this.balance + amount;
   }
 }
 
