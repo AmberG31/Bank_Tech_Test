@@ -72,10 +72,22 @@ describe("Bank class", () => {
     ]);
   });
 
-  // it("returns the transaction and balance in one line", () => {
+  it("returns the transaction and balance in one line", () => {
+    const bank = new Bank();
+    bank.debitToAccount("14/01/2023", 3000);
+    expect(bank.printStatement()).toEqual(
+      "date: 14/01/2023, debit: 3000, balance: 3000"
+    );
+  });
+
+  // it("returns the transaction and accumulates balance in individaul lines", () => {
   //   const bank = new Bank();
   //   bank.debitToAccount("14/01/2023", 3000);
-  //   expect(bank.printStatement());
+  //   bank.creditFromAccount("15/01/2023", 500);
+  //   bank.creditFromAccount("16/01/2023", 300);
+  //   expect(bank.printStatement()).toEqual(
+  //     "date: 14/01/2023, debit: 3000, balance: 2800"
+  //   );
   // });
 });
 

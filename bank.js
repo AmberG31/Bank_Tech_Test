@@ -47,26 +47,15 @@ class Bank {
     });
   }
 
-  // printStatement() {
-  // returns date, credit / debit, balance
-  // }
+  printStatement() {
+    return `${this.showTransactions()}, balance: ${this.showBalance()}`;
+  }
 }
 
 module.exports = Bank;
 
-const bank = new Bank();
-bank.debitToAccount("14/01/2023", "500");
-bank.creditFromAccount("15/01/2023", "100");
+// const bank = new Bank();
+// bank.debitToAccount("14/01/2023", "500");
+// bank.creditFromAccount("15/01/2023", "100");
 
-console.log(bank.showTransactions());
-
-// showTransactions() {
-// const transactionDetails = [];
-// for (let i = 0; i < this.transactions.length; i++) {
-//   const transaction = this.transactions[i];
-//   transactionDetails.push(
-//     `Date: ${transaction.date}, Action: ${transaction.action}, Amount: ${transaction.amount}`
-//   );
-// }
-// return transactionDetails;
-//        `date: ${transaction.date}, action: ${transaction.action}, amount: ${transaction.amount}`
+// console.log(bank.showTransactions());
