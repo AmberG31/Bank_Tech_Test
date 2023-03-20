@@ -15,6 +15,12 @@ const Bank = require("./bank");
 // 10/01/2023 || 1000.00 ||        || 1000.00
 
 describe("Bank class", () => {
+  beforeEach(() => {
+    const bank = new Bank();
+    bank.debitToAccount("00/00/0000", 0);
+    bank.creditFromAccount("00/00/0000", 0);
+  });
+
   it("returns account balance", () => {
     const bank = new Bank();
     expect(bank.showBalance()).toEqual(0);
@@ -22,31 +28,31 @@ describe("Bank class", () => {
 
   it("debits money to the account", () => {
     const bank = new Bank();
-    bank.debitToAccount(3000.0);
-    expect(bank.showBalance()).toEqual(3000.0);
+    bank.debitToAccount("14/01/2023", 3000);
+    expect(bank.showBalance()).toEqual(3000);
   });
 
   it("debits multiple transactions to the account", () => {
     const bank = new Bank();
-    bank.debitToAccount(3000.0);
-    bank.debitToAccount(1000.0);
-    bank.debitToAccount(500.0);
-    expect(bank.showBalance()).toEqual(4500.0);
+    bank.debitToAccount("14/01/2023", 3000);
+    bank.debitToAccount("14/01/2023", 1000);
+    bank.debitToAccount("14/01/2023", 500);
+    expect(bank.showBalance()).toEqual(4500);
   });
 
   it("credits money from the account", () => {
     const bank = new Bank();
-    bank.debitToAccount(3000.0);
-    bank.creditFromAccount(500.0);
-    expect(bank.showBalance()).toEqual(2500.0);
+    bank.debitToAccount("14/01/2023", 3000);
+    bank.creditFromAccount("15/01/2023", 500);
+    expect(bank.showBalance()).toEqual(2500);
   });
 
   it("credits multiple transactions from the account", () => {
     const bank = new Bank();
-    bank.debitToAccount(3000.0);
-    bank.creditFromAccount(500.0);
-    bank.creditFromAccount(200.0);
-    bank.creditFromAccount(300.0);
-    expect(bank.showBalance()).toEqual(2000.0);
+    bank.debitToAccount("14/01/2023", 3000);
+    bank.creditFromAccount("15/01/2023", 500);
+    bank.creditFromAccount("16/01/2023", 300);
+    bank.creditFromAccount("17/01/2023", 200);
+    expect(bank.showBalance()).toEqual(2000);
   });
 });
