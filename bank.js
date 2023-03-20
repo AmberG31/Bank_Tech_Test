@@ -10,6 +10,10 @@ class Bank {
   debitToAccount(amount) {
     this.balance = this.balance + amount;
   }
+
+  creditFromAccount(amount) {
+    this.balance = this.balance - amount;
+  }
 }
 
 module.exports = Bank;

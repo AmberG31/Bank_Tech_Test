@@ -25,4 +25,11 @@ describe("Bank class", () => {
     bank.debitToAccount(3000.0);
     expect(bank.showBalance()).toEqual(3000.0);
   });
+
+  it("credits money from the account", () => {
+    const bank = new Bank();
+    bank.debitToAccount(3000.0);
+    bank.creditFromAccount(500.0);
+    expect(bank.showBalance()).toEqual(2500.0);
+  });
 });
