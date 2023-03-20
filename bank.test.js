@@ -26,10 +26,27 @@ describe("Bank class", () => {
     expect(bank.showBalance()).toEqual(3000.0);
   });
 
+  it("debits multiple transactions to the account", () => {
+    const bank = new Bank();
+    bank.debitToAccount(3000.0);
+    bank.debitToAccount(1000.0);
+    bank.debitToAccount(500.0);
+    expect(bank.showBalance()).toEqual(4500.0);
+  });
+
   it("credits money from the account", () => {
     const bank = new Bank();
     bank.debitToAccount(3000.0);
     bank.creditFromAccount(500.0);
     expect(bank.showBalance()).toEqual(2500.0);
+  });
+
+  it("credits multiple transactions from the account", () => {
+    const bank = new Bank();
+    bank.debitToAccount(3000.0);
+    bank.creditFromAccount(500.0);
+    bank.creditFromAccount(200.0);
+    bank.creditFromAccount(300.0);
+    expect(bank.showBalance()).toEqual(2000.0);
   });
 });
