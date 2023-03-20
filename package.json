@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "esbuild": "^0.17.12",
+    "jest": "^29.5.0"
+  },
+  "name": "bank-tech",
+  "description": "Today, you'll practice doing a tech test.",
+  "version": "1.0.0",
+  "main": "bank.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
