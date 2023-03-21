@@ -23,35 +23,31 @@ describe("Bank class", () => {
 
   it("returns account balance", () => {
     const bank = new Bank();
-    expect(bank.showTransactions()).toEqual([]);
+    expect(bank.printStatement()).toEqual("");
   });
 
   it("debits money to the account", () => {
     const bank = new Bank();
     bank.debitToAccount("14/01/2023", 3000);
-    expect(bank.showTransactions()).toEqual([
-      "date: 14/01/2023, debit: 3000, balance: 3000",
-    ]);
+    expect(bank.printStatement()).toEqual("14/01/2023             3000   3000");
   });
 
   it("debits multiple transactions to the account", () => {
     const bank = new Bank();
     bank.debitToAccount("14/01/2023", 3000);
     bank.debitToAccount("14/01/2023", 1000);
-    expect(bank.showTransactions()).toEqual([
-      "date: 14/01/2023, debit: 3000, balance: 3000",
-      "date: 14/01/2023, debit: 1000, balance: 4000",
-    ]);
+    expect(bank.printStatement()).toEqual(
+      "14/01/2023             3000   3000\n14/01/2023             1000   4000"
+    );
   });
 
   it("credits money from the account", () => {
     const bank = new Bank();
     bank.debitToAccount("14/01/2023", 3000);
     bank.creditFromAccount("15/01/2023", 500);
-    expect(bank.showTransactions()).toEqual([
-      "date: 14/01/2023, debit: 3000, balance: 3000",
-      "date: 15/01/2023, credit: 500, balance: 2500",
-    ]);
+    expect(bank.printStatement()).toEqual(
+      "14/01/2023             3000   3000\n15/01/2023   500              2500"
+    );
   });
 
   it("credits multiple transactions from the account", () => {
@@ -59,37 +55,30 @@ describe("Bank class", () => {
     bank.debitToAccount("14/01/2023", 3000);
     bank.creditFromAccount("15/01/2023", 500);
     bank.creditFromAccount("16/01/2023", 300);
-    expect(bank.showTransactions()).toEqual([
-      "date: 14/01/2023, debit: 3000, balance: 3000",
-      "date: 15/01/2023, credit: 500, balance: 2500",
-      "date: 16/01/2023, credit: 300, balance: 2200",
-    ]);
+    expect(bank.printStatement()).toEqual(
+      "14/01/2023             3000   3000\n15/01/2023   500              2500\n16/01/2023   300              2200"
+    );
   });
 
   it("returns a single transaction", () => {
     const bank = new Bank();
     bank.debitToAccount("14/01/2023", 3000);
-    expect(bank.showTransactions()).toEqual([
-      "date: 14/01/2023, debit: 3000, balance: 3000",
-    ]);
+    expect(bank.printStatement()).toEqual("14/01/2023             3000   3000");
   });
 
   it("returns multiple transactions", () => {
     const bank = new Bank();
     bank.debitToAccount("14/01/2023", 3000);
     bank.creditFromAccount("17/01/2023", 200);
-    expect(bank.showTransactions()).toEqual([
-      "date: 14/01/2023, debit: 3000, balance: 3000",
-      "date: 17/01/2023, credit: 200, balance: 2800",
-    ]);
+    expect(bank.printStatement()).toEqual(
+      "14/01/2023             3000   3000\n17/01/2023   200              2800"
+    );
   });
 
   it("returns the transaction and balance in one line", () => {
     const bank = new Bank();
     bank.debitToAccount("14/01/2023", 3000);
-    expect(bank.printStatement()).toEqual(
-      "date: 14/01/2023, debit: 3000, balance: 3000"
-    );
+    expect(bank.printStatement()).toEqual("14/01/2023             3000   3000");
   });
 
   it("returns multiple transactions and accumulates balance in individaul lines", () => {
@@ -98,20 +87,10 @@ describe("Bank class", () => {
     bank.creditFromAccount("15/01/2023", 500);
     bank.creditFromAccount("16/01/2023", 300);
     expect(bank.printStatement()).toEqual(
-      "date: 14/01/2023, debit: 3000, balance: 3000\ndate: 15/01/2023, credit: 500, balance: 2500\ndate: 16/01/2023, credit: 300, balance: 2200"
+      "14/01/2023             3000   3000\n15/01/2023   500              2500\n16/01/2023   300              2200"
     );
   });
 });
 
 // catch erros - wrong date given
 // balance is less than money being withdrawn
-
-// showBalance() {
-//   return this.transactions.reduce((acc, transaction) => {
-//     if (transaction.debit === true) {
-//       return acc + transaction.amount;
-//     } else {
-//       return acc - transaction.amount;
-//     }
-//   }, 0);
-// }

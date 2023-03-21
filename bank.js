@@ -9,31 +9,7 @@ class Bank {
         amount: 0,
         balance: 0,
       },
-    ]; // stores date, action & amount;
-  }
-
-  showTransactions() {
-    return this.transactions
-      .filter((transaction) => transaction.amount !== 0)
-      .map((transaction) => {
-        if (transaction.debit) {
-          this.balance += transaction.amount;
-          return `date: ${transaction.date}, debit: ${transaction.amount}, balance: ${this.balance}`;
-        } else if (transaction.credit) {
-          this.balance -= transaction.amount;
-          return `date: ${transaction.date}, credit: ${transaction.amount}, balance: ${this.balance}`;
-        }
-      });
-
-    // return this.transactions
-    //   .filter((transaction) => transaction.amount !== 0)
-    //   .map((transaction) => {
-    //     if (transaction.debit) {
-    //       return `date: ${transaction.date}, debit: ${transaction.amount}, balance: ${transaction.balance}`;
-    //     } else if (transaction.credit) {
-    //       return `date: ${transaction.date}, credit: ${transaction.amount}, balance: ${transaction.balance}`;
-    //     }
-    //   });
+    ];
   }
 
   debitToAccount(date, amount) {
@@ -59,11 +35,21 @@ class Bank {
   }
 
   printStatement() {
-    const transactions = this.showTransactions();
+    console.log("date    || credit || debit || balance \n");
+    // 13 and 3 spaces for formating;
+    const statement = this.transactions
+      .filter((transaction) => transaction.amount !== 0)
+      .map((transaction) => {
+        if (transaction.debit) {
+          this.balance += transaction.amount;
+          return `${transaction.date}             ${transaction.amount}   ${this.balance}`;
+        } else if (transaction.credit) {
+          this.balance -= transaction.amount;
+          return `${transaction.date}   ${transaction.amount}              ${this.balance}`;
+        }
+      });
 
-    const sentences = transactions.map((transaction) => `${transaction}`);
-
-    return sentences.join("\n");
+    return statement.join("\n");
   }
 }
 
@@ -74,5 +60,4 @@ module.exports = Bank;
 // bank.creditFromAccount("15/01/2023", 500);
 // bank.creditFromAccount("16/01/2023", 300);
 
-// console.log(bank.showTransactions());
 // console.log(bank.printStatement());
