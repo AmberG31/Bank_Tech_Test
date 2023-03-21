@@ -1,18 +1,10 @@
 # Bank tech test
 
-Today, you'll practice doing a tech test.
-
-For most tech tests, you'll essentially have unlimited time. This practice session is about producing the best code you can when there is a minimal time pressure.
-
-You'll get to practice your OO design and TDD skills.
-
-You'll work alone, and you'll also review your own code so you can practice reflecting on and improving your own work.
-
 ## Specification
 
 ### Requirements
 
-- You should be able to interact with your code via a REPL like IRB or Node. (You don't need to implement a command line interface that takes input from STDIN.)
+- You should be able to interact with your code via a REPL like IRB or Node.
 - Deposits, withdrawal.
 - Account statement (date, amount, balance) printing.
 - Data can be kept in memory (it doesn't need to be stored to a database or anything).
@@ -39,54 +31,34 @@ Once you have completed the challenge and feel happy with your solution, here's 
 <!-- -------------------- -->
 
 README checklist
-Careers team quote: "[One of] the big 3 things we hear from employers [is] write a good README."
 
-Employer quote: "The ReadMes are quite poor...so I had to go through their code to see what they made."
+## My approach to the solution
 
-Describe how you approached designing your solution to the problem.
+<!-- Describe how you approached designing your solution to the problem. -->
 
-Describe how you structured your code. Why did you do it this way?
+I have started with drawing a diagram and understanding what is the expected outcome and what potential functions I should have. I started TDD with very basic tests and once the code was compelted, I have refactored it multiple times to simplify it and reduce the number of functions.
 
-Describe how to install and run your code and tests.
+## Code structure
 
-Describe the dependencies your code has. What trade-offs did you make when deciding what dependencies to use?
+<!-- Describe how you structured your code. Why did you do it this way? -->
 
-If you've deployed the app, include a link to it.
+I was considering of splitting the code it in two classes but decided against it as it only has three functions.
+Bank is the main class that represents a bank account. It has the following properties:
 
-Include screenshots of your running app.
+** balance: A number representing the current balance in the account. Initially set to null.
+** transactions: An array of objects representing each transaction. The initial array contains one transaction object with all properties set to null or 0.
 
-Try very hard to complete all the tasks in the tech test. If you run out of time, outline how you would have approached the sections you didn't get to.
+And the following methods:
 
-<!-- -------------------- -->
+** debitToAccount(date, amount): Adds a new debit transaction to the account with the specified date and amount. The balance property is updated to reflect the new balance after the transaction.
+** creditFromAccount(date, amount): Adds a new credit transaction to the account with the specified date and amount. The balance property is updated to reflect the new balance after the transaction.
+\*\* printStatement(): Returns a string representing a statement of all transactions made on the account. The statement includes the date, credit amount, debit amount, and the updated balance after each transaction.
 
-ESLint:
+## How to install, run and test the code
 
-Install ESLint globally using the following command in your terminal:
+<!-- Describe how to install and run your code and tests. -->
 
-Copy code
-npm install -g eslint
-Navigate to your JavaScript project directory in the terminal.
-
-Run the following command to create a configuration file for ESLint:
-
-csharp
-Copy code
-eslint --init
-This command will prompt you with a series of questions to customize the configuration file for your project.
-
-Once the configuration file is created, you can run ESLint on your JavaScript files by running the following command:
-
-Copy code
-eslint your-javascript-file.js
-ESLint will analyze your code and report any issues it finds according to the rules specified in the configuration file.
-
-You can also integrate ESLint into your development environment, such as Visual Studio Code, by installing an ESLint extension.
-
-That's it! You now have a linter installed for your JavaScript project and can use it to ensure your code follows best practices and is error-free.
-
-<!-- -------------------- -->
-
-TO SET UP THE PROJECT:
+### Set up:
 
 cd bank-tech (git init)
 Initialise the project directory. This assumes you have NVM already installed:
@@ -94,13 +66,20 @@ nvm use node
 npm install jest esbuild
 npm init -y
 
-TO TEST THE PROJECT:
+### Test:
 
-To test run 'jest' in the command line
+Run 'jest' in the command line
 
-TO RUN THE PROJECT:
+### Run:
+
 run the file: node bank.js
 or
 interact live: node
 
-<!-- -------------------- -->
+## Future implimentations
+
+Given more time, I would liek to write a few additional tests and improvements:
+Test: Return an error if the date given is in wrong format;
+Test: Return an error if balance is less than money being withdrawn;
+Improvement: I would like to implement new Date() function instead of the manual input;
+Improvement: Refactor printStatement() function. Split it in two methods to reduce the funcionality of a single funcion.
