@@ -29,7 +29,9 @@ describe("Bank class", () => {
   it("debits money to the account", () => {
     const bank = new Bank();
     bank.debitToAccount("14/01/2023", 3000);
-    expect(bank.printStatement()).toEqual("14/01/2023             3000   3000");
+    expect(bank.printStatement()).toEqual(
+      "14/01/2023 ||         || 3000.00 || 3000.00"
+    );
   });
 
   it("debits multiple transactions to the account", () => {
@@ -37,7 +39,7 @@ describe("Bank class", () => {
     bank.debitToAccount("14/01/2023", 3000);
     bank.debitToAccount("14/01/2023", 1000);
     expect(bank.printStatement()).toEqual(
-      "14/01/2023             3000   3000\n14/01/2023             1000   4000"
+      "14/01/2023 ||         || 3000.00 || 3000.00\n14/01/2023 ||         || 1000.00 || 4000.00"
     );
   });
 
@@ -46,7 +48,7 @@ describe("Bank class", () => {
     bank.debitToAccount("14/01/2023", 3000);
     bank.creditFromAccount("15/01/2023", 500);
     expect(bank.printStatement()).toEqual(
-      "14/01/2023             3000   3000\n15/01/2023   500              2500"
+      "14/01/2023 ||         || 3000.00 || 3000.00\n15/01/2023 || 500.00  ||         || 2500.00"
     );
   });
 
@@ -56,14 +58,16 @@ describe("Bank class", () => {
     bank.creditFromAccount("15/01/2023", 500);
     bank.creditFromAccount("16/01/2023", 300);
     expect(bank.printStatement()).toEqual(
-      "14/01/2023             3000   3000\n15/01/2023   500              2500\n16/01/2023   300              2200"
+      "14/01/2023 ||         || 3000.00 || 3000.00\n15/01/2023 || 500.00  ||         || 2500.00\n16/01/2023 || 300.00  ||         || 2200.00"
     );
   });
 
   it("returns a single transaction", () => {
     const bank = new Bank();
     bank.debitToAccount("14/01/2023", 3000);
-    expect(bank.printStatement()).toEqual("14/01/2023             3000   3000");
+    expect(bank.printStatement()).toEqual(
+      "14/01/2023 ||         || 3000.00 || 3000.00"
+    );
   });
 
   it("returns multiple transactions", () => {
@@ -71,14 +75,16 @@ describe("Bank class", () => {
     bank.debitToAccount("14/01/2023", 3000);
     bank.creditFromAccount("17/01/2023", 200);
     expect(bank.printStatement()).toEqual(
-      "14/01/2023             3000   3000\n17/01/2023   200              2800"
+      "14/01/2023 ||         || 3000.00 || 3000.00\n17/01/2023 || 200.00  ||         || 2800.00"
     );
   });
 
   it("returns the transaction and balance in one line", () => {
     const bank = new Bank();
     bank.debitToAccount("14/01/2023", 3000);
-    expect(bank.printStatement()).toEqual("14/01/2023             3000   3000");
+    expect(bank.printStatement()).toEqual(
+      "14/01/2023 ||         || 3000.00 || 3000.00"
+    );
   });
 
   it("returns multiple transactions and accumulates balance in individaul lines", () => {
@@ -87,7 +93,7 @@ describe("Bank class", () => {
     bank.creditFromAccount("15/01/2023", 500);
     bank.creditFromAccount("16/01/2023", 300);
     expect(bank.printStatement()).toEqual(
-      "14/01/2023             3000   3000\n15/01/2023   500              2500\n16/01/2023   300              2200"
+      "14/01/2023 ||         || 3000.00 || 3000.00\n15/01/2023 || 500.00  ||         || 2500.00\n16/01/2023 || 300.00  ||         || 2200.00"
     );
   });
 });
