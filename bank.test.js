@@ -23,28 +23,35 @@ describe("Bank class", () => {
 
   it("returns account balance", () => {
     const bank = new Bank();
-    expect(bank.showBalance()).toEqual(0);
+    expect(bank.showTransactions()).toEqual([]);
   });
 
   it("debits money to the account", () => {
     const bank = new Bank();
     bank.debitToAccount("14/01/2023", 3000);
-    expect(bank.showBalance()).toEqual(3000);
+    expect(bank.showTransactions()).toEqual([
+      "date: 14/01/2023, debit: 3000, balance: 3000",
+    ]);
   });
 
   it("debits multiple transactions to the account", () => {
     const bank = new Bank();
     bank.debitToAccount("14/01/2023", 3000);
     bank.debitToAccount("14/01/2023", 1000);
-    bank.debitToAccount("14/01/2023", 500);
-    expect(bank.showBalance()).toEqual(4500);
+    expect(bank.showTransactions()).toEqual([
+      "date: 14/01/2023, debit: 3000, balance: 3000",
+      "date: 14/01/2023, debit: 1000, balance: 4000",
+    ]);
   });
 
   it("credits money from the account", () => {
     const bank = new Bank();
     bank.debitToAccount("14/01/2023", 3000);
     bank.creditFromAccount("15/01/2023", 500);
-    expect(bank.showBalance()).toEqual(2500);
+    expect(bank.showTransactions()).toEqual([
+      "date: 14/01/2023, debit: 3000, balance: 3000",
+      "date: 15/01/2023, credit: 500, balance: 2500",
+    ]);
   });
 
   it("credits multiple transactions from the account", () => {
@@ -52,8 +59,11 @@ describe("Bank class", () => {
     bank.debitToAccount("14/01/2023", 3000);
     bank.creditFromAccount("15/01/2023", 500);
     bank.creditFromAccount("16/01/2023", 300);
-    bank.creditFromAccount("17/01/2023", 200);
-    expect(bank.showBalance()).toEqual(2000);
+    expect(bank.showTransactions()).toEqual([
+      "date: 14/01/2023, debit: 3000, balance: 3000",
+      "date: 15/01/2023, credit: 500, balance: 2500",
+      "date: 16/01/2023, credit: 300, balance: 2200",
+    ]);
   });
 
   it("returns a single transaction", () => {
@@ -95,3 +105,13 @@ describe("Bank class", () => {
 
 // catch erros - wrong date given
 // balance is less than money being withdrawn
+
+// showBalance() {
+//   return this.transactions.reduce((acc, transaction) => {
+//     if (transaction.debit === true) {
+//       return acc + transaction.amount;
+//     } else {
+//       return acc - transaction.amount;
+//     }
+//   }, 0);
+// }
