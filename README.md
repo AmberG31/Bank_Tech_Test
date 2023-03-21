@@ -86,14 +86,21 @@ That's it! You now have a linter installed for your JavaScript project and can u
 
 <!-- -------------------- -->
 
-TO RUN AND TEST THE PROJECT:
+TO SET UP THE PROJECT:
 
 cd bank-tech (git init)
 Initialise the project directory. This assumes you have NVM already installed:
 nvm use node
 npm install jest esbuild
-
 npm init -y
+
+TO TEST THE PROJECT:
+
 To test run 'jest' in the command line
+
+TO RUN THE PROJECT:
+run the file: node bank.js
+or
+interact live: node
 
 <!-- -------------------- -->
