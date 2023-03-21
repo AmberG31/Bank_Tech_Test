@@ -59,7 +59,9 @@ describe("Bank class", () => {
   it("returns a single transaction", () => {
     const bank = new Bank();
     bank.debitToAccount("14/01/2023", 3000);
-    expect(bank.showTransactions()).toEqual(["date: 14/01/2023, debit: 3000"]);
+    expect(bank.showTransactions()).toEqual([
+      "date: 14/01/2023, debit: 3000, balance: 3000",
+    ]);
   });
 
   it("returns multiple transactions", () => {
@@ -67,8 +69,8 @@ describe("Bank class", () => {
     bank.debitToAccount("14/01/2023", 3000);
     bank.creditFromAccount("17/01/2023", 200);
     expect(bank.showTransactions()).toEqual([
-      "date: 14/01/2023, debit: 3000",
-      "date: 17/01/2023, credit: 200",
+      "date: 14/01/2023, debit: 3000, balance: 3000",
+      "date: 17/01/2023, credit: 200, balance: 2800",
     ]);
   });
 
@@ -80,15 +82,15 @@ describe("Bank class", () => {
     );
   });
 
-  // it("returns the transaction and accumulates balance in individaul lines", () => {
-  //   const bank = new Bank();
-  //   bank.debitToAccount("14/01/2023", 3000);
-  //   bank.creditFromAccount("15/01/2023", 500);
-  //   bank.creditFromAccount("16/01/2023", 300);
-  //   expect(bank.printStatement()).toEqual(
-  //     "date: 14/01/2023, debit: 3000, balance: 2800"
-  //   );
-  // });
+  it("returns multiple transactions and accumulates balance in individaul lines", () => {
+    const bank = new Bank();
+    bank.debitToAccount("14/01/2023", 3000);
+    bank.creditFromAccount("15/01/2023", 500);
+    bank.creditFromAccount("16/01/2023", 300);
+    expect(bank.printStatement()).toEqual(
+      "date: 14/01/2023, debit: 3000, balance: 3000\ndate: 15/01/2023, credit: 500, balance: 2500\ndate: 16/01/2023, credit: 300, balance: 2200"
+    );
+  });
 });
 
 // catch erros - wrong date given

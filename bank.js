@@ -1,61 +1,77 @@
 class Bank {
   constructor() {
     this.balance = 0;
-    this.transactions = []; // stores date, action & amount;
+    this.transactions = [
+      {
+        date: null,
+        credit: 0,
+        debit: 0,
+        amount: 0,
+        balance: 0,
+      },
+    ]; // stores date, action & amount;
   }
 
   showBalance() {
-    const total = this.transactions.reduce((acc, transaction) => {
+    return this.transactions.reduce((acc, transaction) => {
       if (transaction.debit === true) {
         return acc + transaction.amount;
       } else {
         return acc - transaction.amount;
       }
     }, 0);
-    return total;
   }
 
   showTransactions() {
-    return this.transactions.map((transaction) => {
-      if (transaction.debit) {
-        return `date: ${transaction.date}, debit: ${transaction.amount}`;
-      } else if (transaction.credit) {
-        return `date: ${transaction.date}, credit: ${transaction.amount}`;
-      }
-    });
+    return this.transactions
+      .filter((transaction) => transaction.amount !== 0)
+      .map((transaction) => {
+        if (transaction.debit) {
+          return `date: ${transaction.date}, debit: ${transaction.amount}, balance: ${transaction.balance}`;
+        } else if (transaction.credit) {
+          return `date: ${transaction.date}, credit: ${transaction.amount}, balance: ${transaction.balance}`;
+        }
+      });
   }
 
   debitToAccount(date, amount) {
-    // let action = "debit";
+    const balance = this.showBalance() + amount;
     this.transactions.push({
       date: date,
       credit: false,
       debit: true,
-      // action: action,
       amount: amount,
+      balance: balance,
     });
   }
 
   creditFromAccount(date, amount) {
-    // let action = "credit";
-    const credit = this.transactions.push({
+    const balance = this.showBalance() - amount;
+    this.transactions.push({
       date: date,
       credit: true,
       debit: false,
-      // action: action,
       amount: amount,
+      balance: balance,
     });
   }
 
   printStatement() {
-    return `${this.showTransactions()}, balance: ${this.showBalance()}`;
+    //console.log(this.showTransactions());
+    const transactions = this.showTransactions();
+
+    const sentences = transactions.map((transaction) => `${transaction}`);
+
+    return sentences.join("\n");
   }
 }
 
 module.exports = Bank;
 
-// const bank = new Bank();
-// bank.debitToAccount("14/01/2023", "500");
-// bank.creditFromAccount("15/01/2023", "100");
+const bank = new Bank();
+bank.debitToAccount("14/01/2023", 3000);
+bank.creditFromAccount("15/01/2023", 500);
+bank.creditFromAccount("16/01/2023", 300);
 
-// console.log(bank.showTransactions());
+console.log(bank.showTransactions());
+console.log(bank.printStatement());
