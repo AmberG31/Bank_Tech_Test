@@ -35,7 +35,7 @@ class Bank {
   }
 
   printStatement() {
-    console.log("date       || credit  || debit   || balance");
+    const header = "date       || credit  || debit   || balance";
 
     const statement = this.transactions
       .filter((transaction) => transaction.amount !== 0)
@@ -56,31 +56,15 @@ class Bank {
         )} || ${balance}`;
       });
 
-    return statement.join("\n");
-
-    // console.log("date    || credit || debit || balance \n");
-    // const statement = this.transactions
-    //   .filter((transaction) => transaction.amount !== 0)
-    //   .map((transaction) => {
-    //     // 13 and 3 spaces for formating;
-    //     if (transaction.debit) {
-    //       this.balance += transaction.amount;
-    //       return `${transaction.date}             ${transaction.amount}   ${this.balance}`;
-    //     } else if (transaction.credit) {
-    //       this.balance -= transaction.amount;
-    //       return `${transaction.date}   ${transaction.amount}              ${this.balance}`;
-    //     }
-    //   });
-
-    // return statement.join("\n");
+    return [header, ...statement].join("\n");
   }
 }
 
 module.exports = Bank;
 
-const bank = new Bank();
-bank.debitToAccount("14/01/2023", 3000);
-bank.creditFromAccount("15/01/2023", 500);
-bank.creditFromAccount("16/01/2023", 300);
+// const bank = new Bank();
+// bank.debitToAccount("14/01/2023", 3000);
+// bank.creditFromAccount("15/01/2023", 500);
+// bank.creditFromAccount("16/01/2023", 300);
 
-console.log(bank.printStatement());
+// console.log(bank.printStatement());
