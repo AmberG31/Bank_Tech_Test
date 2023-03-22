@@ -4,20 +4,22 @@
 
 ### Requirements
 
+```
 - You should be able to interact with your code via a REPL like IRB or Node.
 - Deposits, withdrawal.
 - Account statement (date, amount, balance) printing.
 - Data can be kept in memory (it doesn't need to be stored to a database or anything).
+```
 
 ### Acceptance criteria
 
-**Given** a client makes a deposit of 1000 on 10-01-2023  
-**And** a deposit of 2000 on 13-01-2023  
-**And** a withdrawal of 500 on 14-01-2023  
-**When** she prints her bank statement  
+```
+**Given** a client makes a deposit of 1000 on 10-01-2023
+**And** a deposit of 2000 on 13-01-2023
+**And** a withdrawal of 500 on 14-01-2023
+**When** she prints her bank statement
 **Then** she would see
 
-```
 date || credit || debit || balance
 14/01/2023 || || 500.00 || 2500.00
 13/01/2023 || 2000.00 || || 3000.00
@@ -26,7 +28,7 @@ date || credit || debit || balance
 
 ## My approach to the solution
 
-I have started with drawing a diagram and understanding what is the expected outcome and what potential functions I should have. I started TDD with very basic tests and once the code was completed, I have refactored it multiple times to simplify it and reduce the number of functions.
+I have started with drawing a diagram and understanding what is the expected outcome and what potential functions I should have. I started TDD with very basic tests and functions such as just crediting or debiting and returning single amount as a balance. I then refactored the functions to calculate the balance and display everything in one line. Initially I’ve created a function for displaying the balance but came to a challenge to display it with individual transactions so I've refactored by removing the balance function and keeping the responsibility of balance change within the debitToAccount and creditFromAccount functions. Another function I had, was showTransactions - it was displaying transactions in one line. but once I've created the printStatment function which printed the formatted statement, the showTransactions function became unnecessarily and I deleted it. Once the code was completed, I have refactored it multiple times to simplify and reduce the number of functions.
 
 ## Code structure
 
@@ -50,11 +52,17 @@ And the following methods:
 
 ### Set up:
 
-cd bank-tech (git init)
-Initialise the project directory. This assumes you have NVM already installed:
-nvm use node
+to clone the repo:
+git clone https://github.com/AmberG31/Bank_Tech_Test.git
+
+`cd bank-tech`
+
+```
+$ nvm install node
+$ nvm use node
+npm install-
 npm install jest esbuild
-npm init -y
+```
 
 ### Test:
 
