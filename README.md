@@ -33,7 +33,7 @@ I have started with drawing a diagram and understanding what is the expected out
 I was considering to split the code in two classes but decided against it as it only has three functions.
 
 Here is the diagram:
-https://excalidraw.com/
+https://excalidraw.com/#json=mzaFlaI-OLqETni2sNhmj,GGFVFXu_TobuZVfFSj2ebQ
 
 Bank is the main class that represents a bank account. It has the following properties:
 
