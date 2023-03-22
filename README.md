@@ -52,27 +52,63 @@ And the following methods:
 
 ### Set up:
 
-to clone the repo:
-git clone https://github.com/AmberG31/Bank_Tech_Test.git
-
-`cd bank-tech`
+Clone the repo:
 
 ```
+$ git clone https://github.com/AmberG31/Bank_Tech_Test.git
+
+$ cd bank-tech
+
 $ nvm install node
 $ nvm use node
-npm install-
-npm install jest esbuild
+$ npm install
 ```
 
 ### Test:
 
-Run 'jest' in the command line
+To test the code, first install jest
+
+```
+$ npm install jest
+```
+
+To run the tests
+
+```
+$ jest or $ npm run test
+```
 
 ### Run:
 
-run the file: node bank.js
-or
-interact live: node
+You can run this code two ways. By running the file or using node in the terminal.
+
+#### Run the file
+
+Add first create an instance of bank, then pass arguments of `date` and `amount` to either `debitToAccount()` or `creditFromAccount()` functions. After, `consol.log()` `printStatement()` function on `bank` object. You can then run `node bank.js` and the results will be printed to the console.
+
+```javaScript
+const bank = new Bank();
+bank.debitToAccount("14/01/2023", 3000);
+bank.creditFromAccount("15/01/2023", 500);
+bank.creditFromAccount("16/01/2023", 300);
+
+console.log(bank.printStatement());
+```
+
+```
+$ node bank.js
+```
+
+#### Use terminal
+
+```
+$ node
+$ const Bank = require('./bank')
+$ const myBank = new Bank()
+$ myBank.debitToAccount('22/3/2023', 123.45)
+$ myBank.creditFromAccount('22/3/2023', 67.89)
+$ newBank.printStatement()
+```
 
 ## Future implementations
 
