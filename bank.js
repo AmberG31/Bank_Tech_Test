@@ -61,7 +61,6 @@ class Bank {
 }
 
 module.exports = Bank;
-
 // const bank = new Bank();
 // bank.debitToAccount("14/01/2023", 3000);
 // bank.creditFromAccount("15/01/2023", 500);
