@@ -30,7 +30,11 @@ I have started with drawing a diagram and understanding what is the expected out
 
 ## Code structure
 
-I was considering of splitting the code it in two classes but decided against it as it only has three functions.
+I was considering to split the code in two classes but decided against it as it only has three functions.
+
+Here is the diagram:
+https://excalidraw.com/
+
 Bank is the main class that represents a bank account. It has the following properties:
 
 - balance: A number representing the current balance in the account. Initially set to null.
