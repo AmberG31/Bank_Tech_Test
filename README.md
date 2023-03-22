@@ -82,9 +82,9 @@ $ jest or $ npm run test
 
 You can run this code two ways. By running the file or using node in the terminal.
 
-#### Run the file
+#### Running the file
 
-Add first create an instance of bank, then pass arguments of `date` and `amount` to either `debitToAccount()` or `creditFromAccount()` functions. After, `consol.log()` `printStatement()` function on `bank` object. You can then run `node bank.js` and the results will be printed to the console.
+In the `bank.js` file, first create an instance of `Bank`, then pass arguments of `date` and `amount` to either `debitToAccount()` or `creditFromAccount()` functions. After, `consol.log(printStatement())` function on `bank` object. You can then run `node bank.js` in the terminal and the results will be printed to the console.
 
 ```javaScript
 const bank = new Bank();
@@ -99,7 +99,7 @@ console.log(bank.printStatement());
 $ node bank.js
 ```
 
-#### Use terminal
+#### Using terminal
 
 ```
 $ node
