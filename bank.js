@@ -35,7 +35,7 @@ class Bank {
   }
 
   printStatement() {
-    const header = "date       || credit  || debit   || balance";
+    const header = "date || credit || debit || balance";
 
     const statement = this.transactions
       .filter((transaction) => transaction.amount !== 0)
