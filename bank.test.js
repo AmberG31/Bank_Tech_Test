@@ -17,7 +17,7 @@ describe("Bank class", () => {
     const bank = new Bank();
     bank.debitToAccount("14/01/2023", 3000);
     expect(bank.printStatement()).toEqual(
-      "date || credit || debit || balance\n14/01/2023 ||         || 3000.00 || 3000.00"
+      "date || credit || debit || balance\n14/01/2023 ||  || 3000.00 || 3000.00"
     );
   });
 
@@ -26,7 +26,7 @@ describe("Bank class", () => {
     bank.debitToAccount("14/01/2023", 3000);
     bank.debitToAccount("14/01/2023", 1000);
     expect(bank.printStatement()).toEqual(
-      "date || credit || debit || balance\n14/01/2023 ||         || 3000.00 || 3000.00\n14/01/2023 ||         || 1000.00 || 4000.00"
+      "date || credit || debit || balance\n14/01/2023 ||  || 3000.00 || 3000.00\n14/01/2023 ||  || 1000.00 || 4000.00"
     );
   });
 
@@ -35,7 +35,7 @@ describe("Bank class", () => {
     bank.debitToAccount("14/01/2023", 3000);
     bank.creditFromAccount("15/01/2023", 500);
     expect(bank.printStatement()).toEqual(
-      "date || credit || debit || balance\n14/01/2023 ||         || 3000.00 || 3000.00\n15/01/2023 || 500.00  ||         || 2500.00"
+      "date || credit || debit || balance\n14/01/2023 ||  || 3000.00 || 3000.00\n15/01/2023 || 500.00 ||  || 2500.00"
     );
   });
 
@@ -45,7 +45,7 @@ describe("Bank class", () => {
     bank.creditFromAccount("15/01/2023", 500);
     bank.creditFromAccount("16/01/2023", 300);
     expect(bank.printStatement()).toEqual(
-      "date || credit || debit || balance\n14/01/2023 ||         || 3000.00 || 3000.00\n15/01/2023 || 500.00  ||         || 2500.00\n16/01/2023 || 300.00  ||         || 2200.00"
+      "date || credit || debit || balance\n14/01/2023 ||  || 3000.00 || 3000.00\n15/01/2023 || 500.00 ||  || 2500.00\n16/01/2023 || 300.00 ||  || 2200.00"
     );
   });
 
@@ -53,7 +53,7 @@ describe("Bank class", () => {
     const bank = new Bank();
     bank.debitToAccount("14/01/2023", 3000);
     expect(bank.printStatement()).toEqual(
-      "date || credit || debit || balance\n14/01/2023 ||         || 3000.00 || 3000.00"
+      "date || credit || debit || balance\n14/01/2023 ||  || 3000.00 || 3000.00"
     );
   });
 
@@ -62,7 +62,7 @@ describe("Bank class", () => {
     bank.debitToAccount("14/01/2023", 3000);
     bank.creditFromAccount("17/01/2023", 200);
     expect(bank.printStatement()).toEqual(
-      "date || credit || debit || balance\n14/01/2023 ||         || 3000.00 || 3000.00\n17/01/2023 || 200.00  ||         || 2800.00"
+      "date || credit || debit || balance\n14/01/2023 ||  || 3000.00 || 3000.00\n17/01/2023 || 200.00 ||  || 2800.00"
     );
   });
 
@@ -70,7 +70,7 @@ describe("Bank class", () => {
     const bank = new Bank();
     bank.debitToAccount("14/01/2023", 3000);
     expect(bank.printStatement()).toEqual(
-      "date || credit || debit || balance\n14/01/2023 ||         || 3000.00 || 3000.00"
+      "date || credit || debit || balance\n14/01/2023 ||  || 3000.00 || 3000.00"
     );
   });
 
@@ -80,7 +80,7 @@ describe("Bank class", () => {
     bank.creditFromAccount("15/01/2023", 500);
     bank.creditFromAccount("16/01/2023", 300);
     expect(bank.printStatement()).toEqual(
-      "date || credit || debit || balance\n14/01/2023 ||         || 3000.00 || 3000.00\n15/01/2023 || 500.00  ||         || 2500.00\n16/01/2023 || 300.00  ||         || 2200.00"
+      "date || credit || debit || balance\n14/01/2023 ||  || 3000.00 || 3000.00\n15/01/2023 || 500.00 ||  || 2500.00\n16/01/2023 || 300.00 ||  || 2200.00"
     );
   });
 });

@@ -51,9 +51,7 @@ class Bank {
         }
         const date = transaction.date;
         const balance = this.balance.toFixed(2);
-        return `${date} || ${credit.padEnd(7)} || ${debit.padEnd(
-          7
-        )} || ${balance}`;
+        return `${date} || ${credit} || ${debit} || ${balance}`;
       });
 
     return [header, ...statement].join("\n");
@@ -61,9 +59,10 @@ class Bank {
 }
 
 module.exports = Bank;
-// const bank = new Bank();
-// bank.debitToAccount("14/01/2023", 3000);
-// bank.creditFromAccount("15/01/2023", 500);
-// bank.creditFromAccount("16/01/2023", 300);
 
-// console.log(bank.printStatement());
+const bank = new Bank();
+bank.debitToAccount("14/01/2023", 3000);
+bank.creditFromAccount("15/01/2023", 500);
+bank.creditFromAccount("16/01/2023", 300);
+
+console.log(bank.printStatement());
