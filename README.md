@@ -87,12 +87,12 @@ You can run this code two ways. By running the file or using node in the termina
 In the `bank.js` file, first create an instance of `Bank`, then pass arguments of `date` and `amount` to either `debitToAccount()` or `creditFromAccount()` functions. After, `consol.log(printStatement())` function on `bank` object. You can then run `node bank.js` in the terminal and the results will be printed to the console.
 
 ```javaScript
-const bank = new Bank();
+const myBank = new Bank();
 bank.debitToAccount("14/01/2023", 3000);
 bank.creditFromAccount("15/01/2023", 500);
 bank.creditFromAccount("16/01/2023", 300);
 
-console.log(bank.printStatement());
+console.log(myBank.printStatement());
 ```
 
 ```
